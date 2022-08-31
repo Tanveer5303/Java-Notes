@@ -20,3 +20,30 @@ The concept of classes allows us to create complex objects and applications in J
 Classes are also very useful in compartmentalizing the code of an application. Different components could become separate classes which would interact through interfaces. These ready-made components will also be available for use in future applications.
 
 The use of classes makes it easier to maintain the different parts of an application since it is easier to make changes in classes.
+
+example of a car class
+
+class Car{
+
+//Data members
+int speed;
+int fuel;
+String Manufacturer;
+
+//class methods
+
+void refuel(){.....}
+
+void drive(){....}
+
+void park(){.......}
+
+}
+
+
+
+Access Modifiers #
+In Java, we can impose access restrictions on different data members and member functions. The restrictions are specified through access modifiers. 
+Access modifiers are tags we can associate with each member to define which parts of the program can access it directly.
+
+
