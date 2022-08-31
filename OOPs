@@ -446,5 +446,14 @@ unauthorized access or change in the original contents of a class.
 One class does not need to know anything about the underlying algorithms of another class. However, the two can still communicate.
 
 
+Components of Data Hiding#
+Data hiding can be divided into two primary components:
+
+Encapsulation
+Abstraction
+
+
+
+
 
 
