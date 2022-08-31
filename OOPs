@@ -1,0 +1,22 @@
+In the real world, we can find many objects around us like cars, buildings, and humans. 
+All these objects have some state and behavior. If we consider a car, then its states are name, speed, and fuel, and the behavior is refuel, drive, and park.
+
+Classes are the building blocks of programs built using the object-oriented methodology. Such programs consist of independent self-managing modules and their interactions.
+
+An object is an instance of a module, and a class is its definition.
+
+Fields#
+These are also known as the member variables of a class. This is because they contain the information relevant to the object of the class. 
+A car object would have a top speed, a certain number of seats, and so many other pieces of data that we could store in variables.
+
+Methods#
+This category of attributes enables the class object to perform operations using the fields. 
+In the case of the car class, the refuel() function would fill up the fuelCapacity property of the object.
+
+Benefits of using classes#
+
+The concept of classes allows us to create complex objects and applications in Java. This is why classes are the basic building blocks behind all of the OOP’s principles.
+
+Classes are also very useful in compartmentalizing the code of an application. Different components could become separate classes which would interact through interfaces. These ready-made components will also be available for use in future applications.
+
+The use of classes makes it easier to maintain the different parts of an application since it is easier to make changes in classes.
