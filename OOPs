@@ -238,3 +238,202 @@ class Demo {
   }
   
 }
+
+What is a constructor?
+As the name suggests, the constructor is used to construct the object of a class. 
+It is a special method that outlines the steps that are performed when an instance of a class is created in the program.
+
+A constructor’s name must be exactly the same as the name of its class.
+
+The constructor is a special method because it does not have a return type. We do not even need to write void as the return type. 
+It is a good practice to declare/define it as the first member method.
+
+Default constructor#
+The default constructor is the most basic form of a constructor. In a default constructor, we define the default values for the data members of the class. 
+Hence, the constructor creates an object in which the data members are initialized to their default values.
+
+This will make sense when we look at the code below. Here, we have a Date class, with its default constructor, 
+and we’ll create an object out of it in our main():
+
+class Date {
+
+  private int day;
+  private int month;
+  private int year;
+
+
+  // Default constructor
+  public Date() {
+    // We must define the default values for day, month, and year
+    day = 0;
+    month = 0;
+    year = 0;
+  }
+
+  // A simple print function
+  public void printDate(){ 
+    System.out.println("Date: " + day + "/" + month + "/" + year);
+  }
+  
+}
+
+class Demo {
+  
+  public static void main(String args[]) {
+    // Call the Date constructor to create its object;
+    Date date = new Date(); // Object created with default values!
+    date.printDate();
+  }
+  
+}
+
+
+The default constructor does not need to be explicitly defined. Even if we don’t create it, 
+the JVM will call a default constructor and set data members to null or 0.
+
+If you don’t define any constructor, the Java compiler will insert a default constructor for you. Thus, 
+once the class is compiled it will always at least have a no-argument constructor.
+
+Parameterized constructor#
+The default constructor isn’t all that impressive. Sure, we could use set methods to set the values for day, month and year ourselves, but this step can be avoided using a parameterized constructor.
+
+In a parameterized constructor, we pass arguments to the constructor and set them as the values of our data members.
+
+We are basically overloading the default constructor to accommodate our preferred values for the data members.
+
+class Date {
+
+  private int day;
+  private int month;
+  private int year;
+
+
+  // Default constructor
+  public Date() {
+    // We must define the default values for day, month, and year
+    day = 0;
+    month = 0;
+    year = 0;
+  }
+
+  // Parameterized constructor
+  public Date(int d, int m, int y){
+    // The arguments are used as values
+    day = d;
+    month = m;
+    year = y;
+  }
+
+  // A simple print function
+  public void printDate(){ 
+    System.out.println("Date: " + day + "/" + month + "/" + year);
+  }
+}
+
+class Demo {
+  
+  public static void main(String args[]) {
+    // Call the Date constructor to create its object;
+    Date date = new Date(1, 8, 2018); // Object created with specified values! // Object created with default values!
+    date.printDate();
+  }
+  
+}
+
+In the above code if you are giving a parameterised constructor then JVM will not create a default constructor you have to create it.
+
+this reference variable#
+The this reference variable exists for every class. It refers to the class object itself. We use this when we have an argument which has the same name as a data member. 
+this.memberName specifies that we are accessing the memberName variable of the particular class.
+
+
+class Date {
+
+  private int day;
+  private int month;
+  private int year;
+
+
+  // Default constructor
+  public Date() {
+    // We must define the default values for day, month, and year
+    this.day = 0;
+    this.month = 0;
+    this.year = 0;
+  }
+
+  // Parameterized constructor
+  public Date(int day, int month, int year){
+    // The arguments are used as values
+    this.day = day;
+    this.month = month;
+    this.year = year;
+  }
+
+  // A simple print function
+  public void printDate(){ 
+    System.out.println("Date: " + day + "/" + month + "/" + year);
+  }
+  
+}
+
+class Demo {
+  
+  public static void main(String args[]) {
+    // Call the Date constructor to create its object;
+    Date date = new Date(1, 8, 2018); // Object created with specified values! // Object created with default values!
+    date.printDate();
+  }
+  
+}
+#################################################
+
+calling a constructor from a constructor#
+
+class Date {
+
+  private int day;
+  private int month;
+  private int year;
+  private String event;
+
+
+  // Default constructor
+  public Date() {
+    // We must define the default values for day, month, and year
+    this.day = 0;
+    this.month = 0;
+    this.year = 0;
+  }
+
+  // Parameterized constructor
+  public Date(int day, int month, int year){
+    // The arguments are used as values
+    this.day = day;
+    this.month = month;
+    this.year = year;
+  }
+  
+  // Parameterized constructor
+  public Date(int day, int month, int year, String event){
+    this(day, month, year); // calling the constructor
+    this.event = event;
+  }
+
+  // A simple print function
+  public void printDate(){ 
+    System.out.println("Date: " + day + "/" + month + "/" + year + "  --> " + event);
+  }
+  
+}
+
+class Demo {
+  
+  public static void main(String args[]) {
+    // Call the Date constructor to create its object;
+    Date date = new Date(1, 1, 2019, "New Year"); // Object created with specified values! // Object created with default values!
+    date.printDate();
+  }
+  
+}
+
