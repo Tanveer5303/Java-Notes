@@ -46,4 +46,195 @@ Access Modifiers #
 In Java, we can impose access restrictions on different data members and member functions. The restrictions are specified through access modifiers. 
 Access modifiers are tags we can associate with each member to define which parts of the program can access it directly.
 
+Private#
+A private member cannot be accessed directly from outside the class. The aim is to keep it hidden from the users and other classes. It is a popular practice to keep the data members private since we do not want anyone manipulating our data directly. 
+We can make members private using the keyword private.
 
+class Cop {
+  
+  private int gun; // We have explicitly defined that the variable is private
+  // ...
+}
+
+
+Public#
+This tag indicates that the members can be directly accessed by anything which is in the same scope as the class object.
+
+Member functions are usually public as they provide the interface through which the application can communicate with our private members.
+
+Public members can be declared using the keyword public.
+
+class Cop{
+
+private int gun;    // this can not be accessed directly out side the class.
+
+public int getGun(){ // this will return gun we can access through this method
+    return gun;
+}
+
+}
+
+class Main{
+
+public static void main(String[] args){
+
+Cop c = new Cop();
+c.getGun(); //this will get the gn feild
+c.gun=0;  //this will create the error since gun is private
+}
+}
+
+
+Protected#
+The protected category is unique. The access level to the protected members lies somewhere between private and public. 
+The primary use of the protected tag can be found when using inheritance, which is the process of creating classes out of other classes.
+
+The protected data members can be accessed inside a Java package. However, outside the package, they can only be referred to through an inherited class.
+
+
+example
+
+package justice;
+public class Cop {
+  private int gun;
+  public int getGun(){
+    return gun;  
+  }
+  protected void fire(){
+    System.out.println("shoot!");
+  }
+}
+
+
+package crime;  
+import justice.*; 
+
+class Thief{  
+  public static void main(String args[]){  
+   Cop obj = new Cop();  
+   obj.fire(); //Compile Time Error  
+  }  
+} 
+
+
+The Thief class will throw a compile-time error because it is trying to access the fire() method of the Cop class which is defined in a different package.
+
+Default#
+If we do not mention any access modifier, then it is considered to be default access. The default access is similar to the protected. 
+It also has package-level access, but it also applies to inherited classes as well, unlike protected. So, you can say that its access is more limited.
+
+Java supports static and non-static fields.
+
+Static field#
+A static field resides in a class. All the objects we create will share this field and its value.
+
+class Car {
+
+  // static fields
+  static int topSpeed;
+  static int maxCapacity;
+
+}
+Static fields reside in the class. We don’t need an instance of the class to access static fields. 
+We can access the static fields of a class by just writing the class name before the field:
+
+class Car {
+    // static fields
+    static int topSpeed = 100;
+    static int maxCapacity = 4;  
+}
+
+class Demo {
+    public static void main(String args[]){
+    // Static fields are accessible in the main
+    System.out.println(Car.topSpeed);
+    System.out.println(Car.maxCapacity);   
+  }
+}
+svg viewer
+
+Non-static field
+Non-static fields are located in the instances of the class. Each instance of the class can have its own values for these fields.
+class Car {
+  
+  // Non-Static Fields
+  int speed;
+  int capacity;
+}
+
+As non-static fields doesn’t reside in the class, So we need an instance of the class to access non-static fields.
+class Car {
+    // static fields
+    int speed = 100;
+    int capacity = 4;  
+}
+
+class Demo {
+    public static void main(String args[]){
+    Car obj1 = new Car();
+    System.out.println(obj1.speed);
+    System.out.println(obj1.capacity);   
+  }
+}
+
+Final fields#
+A final field cannot have its value changed once it is assigned. We can make a field final by using the keyword final.
+class Car {
+  // Final field of capacity = 4
+  // Now Capacity can nerver be changed from 4
+  // to some other value throught the program
+  final int capacity = 4;
+}
+Car class has capacity equals to 4 which can’t be changed. If you try to do so, you will get a compilation error:
+
+can't assign a value to final variable capacity
+
+class Car {
+  // Final variable capacity
+  final int capacity = 4;
+}
+
+class Demo {
+   public static void main(String args[]) {
+      Car car = new Car();
+      car.capacity = 5; // Trying to change the capacity value  will give error
+   }
+}
+
+The purpose of methods#
+Methods act as an interface between a program and the data fields of a class in the program.
+
+These methods can either alter the content of the data fields or use their values to perform a certain computation. All the useful methods should be public, 
+although, some methods which do not need to be accessed from the outside could be kept private.
+
+Method overloading#
+Overloading refers to making a method perform different operations based on the nature of its arguments.
+
+Methods can be overloaded in Java.
+
+We could redefine a method several times and give it different arguments and method types. When the method is called, the appropriate definition will be selected by the compiler!
+
+
+
+  }
+
+}
+
+class Demo {
+  
+  public static void  main(String args[]) {
+    Calculator cal = new Calculator();
+    
+    double x = 10;
+    double y = 20;
+    double z = 5;
+    
+    int a = 12;
+    int b = 4;
+    
+    System.out.println(cal.product(x, y));
+    System.out.println(cal.product(x, y, z));
+    System.out.println(cal.product(a, b));
+  }
+  
+}
