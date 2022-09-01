@@ -454,6 +454,22 @@ Abstraction
 
 
 
+Inheritance#
+
+Inheritance provides a way to create a new class from an existing class. The new class is a specialized version of the existing class such that it inherits all the 
+non-private fields (variables) and methods of the existing class.The existing class is used as a starting point or as a base to create the new class.
+
+wherever we come across an IS A relationship between objects, we can use inheritance.
+A square IS A shape
+Java IS A programming language
+Car IS A vehicle
+
+
+The Java Object class#
+
+In Java whenever we create a class, it inherits all the non-private methods and fields from the builtin Java Object class by default which makes 
+it a very good example of inheritance in Java. The methods defined in the Object class come in very handy when you create new classes.
+
 
 
 
