@@ -470,6 +470,336 @@ The Java Object class#
 In Java whenever we create a class, it inherits all the non-private methods and fields from the builtin Java Object class by default which makes 
 it a very good example of inheritance in Java. The methods defined in the Object class come in very handy when you create new classes.
 
+Note: A child class has all non-private characteristics of the parent class.
+
+Inheritance Example #
+// Base Class Vehicle
+class Vehicle {
+
+  // Private Fields
+  private String make; 
+  private String color; 
+  private int year;      
+  private String model;   
+
+
+  // Parameterized Constructor
+  public Vehicle(String make, String color, int year, String model) {
+    this.make = make;
+    this.color = color;
+    this.year = year;  
+    this.model = model; 
+  }
+
+  // public method to print details
+  public void printDetails() {
+    System.out.println("Manufacturer: " + make);
+    System.out.println("Color: " + color);
+    System.out.println("Year: " + year);
+    System.out.println("Model: " + model);
+  }
+  
+}
+
+// Derived Class Car
+class Car extends Vehicle {
+
+  // Private field
+  private String bodyStyle;
+
+  // Parameterized Constructor
+  public Car(String make, String color, int year, String model, String bodyStyle) {
+    super(make, color, year, model);  //calling parent class constructor
+    this.bodyStyle = bodyStyle;       
+  }
+
+  public void carDetails() {  //details of car
+    printDetails();         //calling method from parent class
+    System.out.println("Body Style: " + bodyStyle);
+  }
+  
+}
+
+class Main {
+
+  public static void main(String[] args) {
+    Car elantraSedan = new Car("Hyundai", "Red", 2019, "Elantra", "Sedan"); //creation of car Object
+    elantraSedan.carDetails(); //calling method to print details
+  }
+  
+}
+
+
+Super#
+
+class Vehicle { //Base class vehicle  
+
+  int fuelCap = 90; //fuelCap field inside SuperClass
+
+} 
+
+
+class Car extends Vehicle { // sub class Car extending from Vehicle
+
+  int fuelCap = 50; //fuelCap field inside SubClass
+
+  public void display() { 
+    //accessing the field of parent class using super*/
+    System.out.println("Fuel Capacity from the Vehicle class: " + super.fuelCap); 
+    //without using super the field of current class shadows the field of parant class*/
+    System.out.println("Fuel Capacity from the Car class: " + fuelCap); 
+
+  } 
+
+} 
+
+class Main {
+
+  public static void main(String[] args) { 
+    Car corolla = new Car(); 
+    corolla.display(); 
+  } 
+
+}
+
+Super 2#
+class Vehicle {          //Base class vehicle 
+
+  public void display() {   //display method inside SuperClass
+    System.out.println("I am from the Vehicle Class");
+  }
+
+} 
+
+class Car extends Vehicle { // sub class Car extending from Vehicle
+
+  public void display() { //display method inside SubClass
+    System.out.println("I am from the Car Class");
+  } 
+
+  public void printOut(){
+    System.out.println("The display() call with super:");
+    super.display();  //calling the display() of Vehicle(SuperClass)
+    System.out.println("The display() call without super:");
+    display();        //calling the display() of the Car(SubClass)
+  }
+
+} 
+
+class Main {
+
+  public static void main(String[] args) {
+    Car corolla = new Car(); 
+    corolla.printOut(); 
+  }
+
+}
+
+Using with constructors#
+Another very important use of the keyword super is to call the constructor of the SuperClass from inside of the constructor of the SubClass.
+Important Note: When you create an Object of a SubClass type at the same time, an Object of SuperClass type is created by calling implicitly the constructor of SuperClass.
+
+
+Note: The below code will give an error as there is no call to the SuperClass constructor from inside of the SubClass constructor.
+
+class Vehicle {              //base class of vehicle
+  
+    private String make;    //
+    private String color;   // Vehicle Fields
+    private int year;       //
+    private String model;   //
+
+
+
+    public Vehicle(String make, String color, int year, String model) {
+        this.make = make;    //
+        this.color = color;  // Constructor of Vehicle
+        this.year = year;    //
+        this.model = model;  //
+    }
+
+    public void printDetails() {  //public method to print details
+        System.out.println("Manufacturer: " + make);
+        System.out.println("Color: " + color);
+        System.out.println("Year: " + year);
+        System.out.println("Model: " + model);
+    }
+  
+}
+
+class Car extends Vehicle {    //derived class of Car
+
+    private String bodyStyle;  //Car field
+
+    public Car(String make, String color, int year, String model, String bodyStyle) {
+        //super(make, color, year, model);  //parent class constructor
+        this.bodyStyle = bodyStyle;       
+    }
+
+    public void carDetails() {  //details of car
+        printDetails();         //calling method from parent class
+        System.out.println("Body Style: " + bodyStyle);
+    }
+  
+}
+class Main {
+
+    public static void main(String[] args) {
+        Car elantraSedan = new Car("Hyundai", "Red", 2019, "Elantra", "Sedan"); //creation of car Object
+        elantraSedan.carDetails(); //calling method to print details
+    }
+  
+}
+
+Output
+1.93s
+main.java:30: error: constructor Vehicle in class Vehicle cannot be applied to given types;
+    public Car(String make, String color, int year, String model) {
+                                                                  ^
+  required: String,String,int,String
+  found: no arguments
+  reason: actual and formal argument lists differ in length
+1 error
+
+Now let’s uncomment the above highlighted line in the code widget and try running the code again. It will execute this time.
+
+
+class Vehicle {              //base class of vehicle
+  
+    private String make;    //
+    private String color;   // Vehicle Fields
+    private int year;       //
+    private String model;   //
+
+
+    public Vehicle(String make, String color, int year, String model) {
+        this.make = make;    //
+        this.color = color;  // Constructor of Vehicle
+        this.year = year;    //
+        this.model = model;  //
+    }
+
+    public void printDetails() {  //public method to print details
+        System.out.println("Manufacturer: " + make);
+        System.out.println("Color: " + color);
+        System.out.println("Year: " + year);
+        System.out.println("Model: " + model);
+    }
+  
+}
+
+class Car extends Vehicle {    //derived class of Car
+
+    private String bodyStyle;  //Car field
+
+    public Car(String make, String color, int year, String model, String bodyStyle) {
+        super(make, color, year, model);  //parent class constructor
+        this.bodyStyle = bodyStyle;       
+    }
+
+    public void carDetails() {  //details of car
+        printDetails();         //calling method from parent class
+        System.out.println("Body Style: " + bodyStyle);
+    }
+  
+}
+
+class Main {
+
+    public static void main(String[] args) {
+        Car elantraSedan = new Car("Hyundai", "Red", 2019, "Elantra", "Sedan"); //creation of car Object
+        elantraSedan.carDetails(); //calling method to print details
+    }
+  
+}
+
+
+Output
+2.52s
+Manufacturer: Hyundai
+Color: Red
+Year: 2019
+Model: Elantra
+Body Style: Sedan
+
+
+Note: In a constructor we can include a call to super() or this() but not both. Also, these calls can only be used inside the constructors.
+
+
+
+What is Polymorphism?
+
+The word Polymorphism is a combination of two Greek words, Poly means many and Morph means forms.
+
+In programming, polymorphism refers to the same object exhibiting different forms and behaviors.
+
+For example, take the Shape Class. The exact shape you choose can be anything. It can be a rectangle,
+a circle, a polygon or a diamond. So, these are all shapes but their properties are different. This is called Polymorphism.
+
+
+// Shape Class
+class Shape {
+
+  public double getArea() {
+    return 0;
+  }
+  
+}
+
+// A Rectangle is a Shape
+class Rectangle extends Shape {   // extended form the Shape class
+
+  private double length;
+  private double width;
+  
+  public Rectangle(double length, double width) {
+    this.length = length;
+    this.width = width;
+  }
+
+  public double getArea() {
+    return this.length * this.width;
+  }
+  
+}
+
+// A Circle is a Shape
+class Circle extends Shape {
+
+  private double radius;
+  
+  public Circle(double radius) {
+    this.radius = radius;
+  }
+
+  public double getArea() {
+    return this.radius * this.radius * 3.14;
+  }
+
+
+  public static void main(String args[]) {
+    Shape[] shape = new Shape[2]; // Creating the shape array of size 2
+
+    shape[0] = new Circle(2); // creating the circle object at index 0
+    shape[1] = new Rectangle(2, 3); // creating the rectangle object at index 1
+
+    System.out.println("Area of Circle: " + shape[0].getArea());
+    System.out.println("Area of Rectangle: " + shape[1].getArea());
+  }
+
+}
+
+
+Here, we have three classes Shape, Circle, and Rectangle. Shape is a parent class while Circle and Rectangle are the child classes. 
+The child classes are overriding the method getArea() of the parent class. We have child classes objects assigned to the parent class reference. 
+So to determine which method would be called, the type of the object would be determined at runtime.This is the reason it is also known as runtime polymorphism.
+
+
+
+
+
+
+
 
 
 
