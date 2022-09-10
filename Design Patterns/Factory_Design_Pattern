@@ -1,0 +1,59 @@
+package Factory_Design_Pattern;
+
+public class java_factory_method {
+
+    public static interface Mario{
+        String name();
+    }
+
+    public static class fireMario implements Mario{
+
+        @Override
+        public String name() {
+            return "Fire Mario";
+        }
+    }
+    public static class capeMario implements Mario{
+
+        @Override
+        public String name() {
+            return "Cape Mario";
+        }
+    }
+
+    public static abstract class MarioMaker{
+
+        abstract Mario CreateMario();
+        public void operations(){
+            Mario m = CreateMario();
+            System.out.println(m.name());
+        }
+    }
+
+    public static class FireMaker extends MarioMaker{
+
+        @Override
+        public Mario CreateMario() {
+            return new fireMario();
+        }
+    }
+    public static class CapeMaker extends MarioMaker{
+
+        @Override
+        public Mario CreateMario() {
+            return new capeMario();
+        }
+    }
+
+    public static class GameManager{
+        public void StartGame(MarioMaker mm){
+            mm.operations();
+        }
+
+        public static void main(String[] args) {
+            GameManager gm = new GameManager();
+            gm.StartGame(new FireMaker());
+        }
+    }
+
+}
