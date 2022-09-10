@@ -1,0 +1,46 @@
+It is a creational design pattern.
+It ensures that a class should have only one instance throughout the application.
+The instance is accessible from any part of the application with global access.
+
+Why do we need single instance of some objects?
+
+>There might be some objects that  may be common to all part of the program and we requires a single instance of it.
+>for eg: there is a cost estimator system in a company which takes estimated cost from every department of the comapny so that the expenditure of company can be tracked.
+cost estimator is a class and its object must be common in all departments so that the expenditure can be submitted to single object.
+
+so the object to which all departments report should have global access so that all departments can access it.
+
+here we need a Singleton Design
+
+approch one:
+
+define the object in a global space
+
+public class CostEstimator{
+    public CostEstimator(){}
+//rest part of the class
+}
+
+CostEstimator ce = new CostEstimator();
+//declared in global scope
+
+void department1(){//uses gloalcost}
+void department2(){//uses gloalcost}
+
+drawbacks ::
+this approach does not tell us that there will be only one instance of cost extimator, there can be a part of code that can call the constructor of class
+(CostEstimator ce = new CostEstimator();), constructor of any class always return a new instance of that class.
+
+
+public class CostEstimator{
+    public CostEstimator(){}
+//rest part of the class
+}
+
+CostEstimator ce = new CostEstimator();
+//declared in global scope
+
+void department1(){
+CostEstimator ce = new CostEstimator();
+}
+void department2(){//uses gloalcost}
