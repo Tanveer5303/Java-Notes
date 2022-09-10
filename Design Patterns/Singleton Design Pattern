@@ -44,3 +44,44 @@ void department1(){
 CostEstimator ce = new CostEstimator();
 }
 void department2(){//uses gloalcost}
+
+
+
+Efficient approach usng singleton pattern ::
+
+>make class constructor private so no other depatment can create the another instance of the class.
+>make a static variable named Cost of the class type for eg: "CostEstimator Cost ;" .
+>make a static function getCost() which will return the code as well maintain the single instance creation for the class.
+
+
+public static class CostEstimator{
+
+private int amount;
+private static CostEstimator Cost = null;
+private CostEstimator (){
+    this.amount = 0;
+    }
+public static CostEstimator getCost() {
+
+    if(Cost == null){
+    Cost = new CostEstimator();
+    }
+    //Notice that we've implemented lazy initialization
+    return Cost;
+}
+
+public int showAmount (){
+    return amount;
+}
+
+public void addAmount (int amount){
+    this.amount += amount;
+}
+
+}
+
+
+Lazy initialization --> the object is not created untill it is needed for the first time.
+Early initialization --> the object is initialized at the time of declaration it self.
+
+
