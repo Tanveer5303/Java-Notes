@@ -1,0 +1,74 @@
+import java.util.Date;
+
+public class Task {
+
+    private String title;
+    private boolean completed;
+    private final Date created;
+
+    public Task(String title){
+        this.title = title;
+        this.created = new Date();
+        this.completed = false;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+
+    public void done(){
+        this.completed=true;
+    }
+
+    public void undone(){
+        this.completed=false;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "title='" + title + '\'' +
+                ", completed=" + completed +
+                ", created=" + created +
+                '}';
+    }
+}
+
+import java.util.Date;
+
+public class TaskApplication {
+    public static void main(String[] args) {
+        Task task = new Task("complete the geektrust challenge");
+        System.out.println(task);
+
+        task.done();
+        System.out.println(task);
+
+        task.undone();
+        System.out.println(task);
+    }
+}
+
+In above code made some changes replaced setter and getter with some task functions(done(),undone()).
+Also initialized value via constructor so that values like date title can be initialized at the run time.
+Made date variable final so that it can not be changed further via setter or other functions.
+
+its a good practice to override toString() from Objects class it adds details to the object and using it we can uniquely diffrentiate objects.
+Task task = new Task();
+if(we have not overrided the toString() --->> sysout(task) will give Task@hlsdhg22)
+if(we have overrided the toString() --->> sysout(task) will give the better representation of object.)
