@@ -1,3 +1,9 @@
+
+It is a creational design pattern that talks about the creation of an object. The factory design pattern says that 
+define an interface ( A java interface or an abstract class) for creating object and let the subclasses decide which class to instantiate.
+
+https://www.enjoyalgorithms.com/blog/factory-design-pattern/
+
 package Factory_Design_Pattern;
 
 public class java_factory_method {
